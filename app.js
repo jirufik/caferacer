@@ -23,7 +23,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/caferacer', index);
+app.use('/caferacer.html', index);
+app.use('/CafeRacer', index);
+app.use('/CafeRacer.html', index);
+app.use('/CafeRacer/CafeRacer.html', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
