@@ -1,6 +1,6 @@
-extends layout
-
-block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+head
+    link(rel='stylesheet', href='/stylesheets/page404.css')
+    title Not found 404
+body
+    #main
+        img.img-go-to(src="images/page404.png", alt="404")
