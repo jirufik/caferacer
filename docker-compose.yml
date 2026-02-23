@@ -1,0 +1,9 @@
+services:
+  caferacer:
+    build: .
+    ports:
+      - '4002:4002'
+    environment:
+      - NODE_ENV=production
+      - PORT=4002
+    restart: unless-stopped
