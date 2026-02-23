@@ -97,11 +97,9 @@ export class GameScene extends Phaser.Scene {
       const count = gameState.getPlayerCount();
       for (let i = 0; i < count; i++) {
         const player = gameState.getPlayer(i);
-        player.sprite = this.add.sprite(
-          firstPosX + BOARD.PLAYER_OFFSET,
-          BOARD.START_Y,
-          player.namesprite,
-        );
+        player.sprite = this.add
+          .sprite(firstPosX + BOARD.PLAYER_OFFSET, BOARD.START_Y, player.namesprite)
+          .setOrigin(0, 0);
         firstPosX += BOARD.PLAYER_OFFSET;
       }
       gameState.settings.finishplayers = [];
@@ -112,15 +110,13 @@ export class GameScene extends Phaser.Scene {
       for (let i = 0; i < count; i++) {
         const player = gameState.getPlayer(i);
         if (player.posonboard === 0) {
-          player.sprite = this.add.sprite(
-            firstPosX + BOARD.PLAYER_OFFSET,
-            BOARD.START_Y,
-            player.namesprite,
-          );
+          player.sprite = this.add
+            .sprite(firstPosX + BOARD.PLAYER_OFFSET, BOARD.START_Y, player.namesprite)
+            .setOrigin(0, 0);
           firstPosX += BOARD.PLAYER_OFFSET;
         } else {
           const pos = Board.getPosition(player.posonboard);
-          player.sprite = this.add.sprite(pos.x, pos.y, player.namesprite);
+          player.sprite = this.add.sprite(pos.x, pos.y, player.namesprite).setOrigin(0, 0);
         }
       }
     }
@@ -129,7 +125,7 @@ export class GameScene extends Phaser.Scene {
   }
 
   private createDice(): void {
-    this.qubic1 = this.add.sprite(UI.DICE_1_POS.x, UI.DICE_1_POS.y, 'qubicS');
+    this.qubic1 = this.add.sprite(UI.DICE_1_POS.x, UI.DICE_1_POS.y, 'qubicS').setOrigin(0, 0);
     this.anims.create({
       key: 'bzzz',
       frames: this.anims.generateFrameNumbers('qubicS', { frames: [0, 1] }),
@@ -137,7 +133,7 @@ export class GameScene extends Phaser.Scene {
       repeat: -1,
     });
 
-    this.qubic2 = this.add.sprite(UI.DICE_2_POS.x, UI.DICE_2_POS.y, 'qubicS');
+    this.qubic2 = this.add.sprite(UI.DICE_2_POS.x, UI.DICE_2_POS.y, 'qubicS').setOrigin(0, 0);
     this.anims.create({
       key: 'bzzz2',
       frames: this.anims.generateFrameNumbers('qubicS', { frames: [0, 1] }),
@@ -145,7 +141,7 @@ export class GameScene extends Phaser.Scene {
       repeat: -1,
     });
 
-    this.qubic3 = this.add.sprite(UI.DICE_3_POS.x, UI.DICE_3_POS.y, 'qubicS');
+    this.qubic3 = this.add.sprite(UI.DICE_3_POS.x, UI.DICE_3_POS.y, 'qubicS').setOrigin(0, 0);
     this.anims.create({
       key: 'bzzz3',
       frames: this.anims.generateFrameNumbers('qubicS', { frames: [0, 1] }),
@@ -207,11 +203,9 @@ export class GameScene extends Phaser.Scene {
       '',
       UI.TEXT_STYLE,
     );
-    this.spriteCurPlayer = this.add.sprite(
-      UI.CUR_PLAYER_SPRITE_POS.x,
-      UI.CUR_PLAYER_SPRITE_POS.y,
-      gameState.getCurrentPlayer().namesprite,
-    );
+    this.spriteCurPlayer = this.add
+      .sprite(UI.CUR_PLAYER_SPRITE_POS.x, UI.CUR_PLAYER_SPRITE_POS.y, gameState.getCurrentPlayer().namesprite)
+      .setOrigin(0, 0);
   }
 
   private createMenuButton(
@@ -796,11 +790,9 @@ export class GameScene extends Phaser.Scene {
     const cur = gameState.getCurrentPlayer();
     this.textCurPlayer.setText(cur.nameplayer);
     this.spriteCurPlayer?.destroy();
-    this.spriteCurPlayer = this.add.sprite(
-      UI.CUR_PLAYER_SPRITE_POS.x,
-      UI.CUR_PLAYER_SPRITE_POS.y,
-      cur.namesprite,
-    );
+    this.spriteCurPlayer = this.add
+      .sprite(UI.CUR_PLAYER_SPRITE_POS.x, UI.CUR_PLAYER_SPRITE_POS.y, cur.namesprite)
+      .setOrigin(0, 0);
     this.updateLapText();
   }
 
