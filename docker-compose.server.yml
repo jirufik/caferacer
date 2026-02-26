@@ -1,0 +1,16 @@
+services:
+  caferacer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: caferacer
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "4002"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
